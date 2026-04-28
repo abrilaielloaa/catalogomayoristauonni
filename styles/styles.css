@@ -50,11 +50,12 @@ body {
 }
 
 .header-logo {
-    height: 44px;
+    height: 50px;
     border-radius: 8px;
     object-fit: contain;
     background: rgba(255, 255, 255, .1);
-    padding: 4px
+    padding: 4px;
+    border-radius: 40px;
 }
 
 .header-info {
