@@ -21,4 +21,30 @@ function cerrarModal() { document.getElementById("modal-overlay").classList.remo
 function buildTextResumen() { var nombre = document.getElementById("f-nombre").value.trim(); var negocio = document.getElementById("f-negocio").value.trim(); var wa = document.getElementById("f-wa").value.trim(); var mail = document.getElementById("f-mail").value.trim(); var localidad = document.getElementById("f-localidad").value.trim(); var total = Object.values(cart).reduce(function (s, i) { return s + i.price * i.qty; }, 0); var fecha = new Date().toLocaleDateString("es-AR", { day: "2-digit", month: "2-digit", year: "numeric" }); var sep = "------------------------"; var lines = []; lines.push("*PEDIDO MAYORISTA UONNI*"); lines.push("Fecha: " + fecha); lines.push(sep); lines.push("*DATOS DEL COMPRADOR*"); if (nombre) lines.push("Nombre: " + nombre); if (negocio) lines.push("Negocio: " + negocio); if (wa) lines.push("WhatsApp: " + wa); if (mail) lines.push("Email: " + mail); if (localidad) lines.push("Localidad: " + localidad); lines.push(sep); lines.push("*PRODUCTOS*"); var keys = Object.keys(cart); for (var i = 0; i < keys.length; i++) { var item = cart[keys[i]]; lines.push("- " + item.name); lines.push("  " + item.qty + " u. x " + fmt(item.price) + " = " + fmt(item.price * item.qty)); } lines.push(sep); lines.push("*TOTAL: " + fmt(total) + "*"); return lines.join("\n"); }
 function copiarResumen() { var txt = buildTextResumen(); navigator.clipboard.writeText(txt).then(function () { var btn = document.getElementById("btn-copiar"); btn.textContent = "Copiado!"; setTimeout(function () { btn.textContent = "Copiar"; }, 2000); }).catch(function () { alert("No se pudo copiar automaticamente."); }); }
 function enviarWA() { var txt = buildTextResumen(); window.open("https://wa.me/541121733672?text=" + encodeURIComponent(txt), "_blank"); }
-loadCart(); loadClientData(); updateTotal(0);
+// Drag scroll en el menu de categorias
+var slider = document.querySelector('.cats-scroll');
+var isDown = false;
+var startX;
+var scrollLeft;
+
+slider.addEventListener('mousedown', function(e) {
+  isDown = true;
+  slider.style.cursor = 'grabbing';
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+});
+slider.addEventListener('mouseleave', function() {
+  isDown = false;
+  slider.style.cursor = 'grab';
+});
+slider.addEventListener('mouseup', function() {
+  isDown = false;
+  slider.style.cursor = 'grab';
+});
+slider.addEventListener('mousemove', function(e) {
+  if (!isDown) return;
+  e.preventDefault();
+  var x = e.pageX - slider.offsetLeft;
+  var walk = (x - startX) * 1.5;
+  slider.scrollLeft = scrollLeft - walk;
+});loadCart(); loadClientData(); updateTotal(0);
