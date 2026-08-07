@@ -551,6 +551,86 @@ if (slider) {
   });
 }
 
+// Carrusel
+const slides = document.querySelector(".slides");
+const slide = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
+
+const prev = document.querySelector(".prev");
+const next = document.querySelector(".next");
+
+let current = 0;
+let interval;
+
+function updateCarousel() {
+
+    slides.style.transform = `translateX(-${current * 100}%)`;
+
+    dots.forEach(dot => dot.classList.remove("active"));
+    dots[current].classList.add("active");
+
+}
+
+function nextSlide() {
+
+    current++;
+
+    if(current >= slide.length){
+        current = 0;
+    }
+
+    updateCarousel();
+
+}
+
+function prevSlide() {
+
+    current--;
+
+    if(current < 0){
+        current = slide.length - 1;
+    }
+
+    updateCarousel();
+
+}
+
+next.addEventListener("click", () => {
+    nextSlide();
+    restartAuto();
+});
+
+prev.addEventListener("click", () => {
+    prevSlide();
+    restartAuto();
+});
+
+dots.forEach((dot, index) => {
+
+    dot.addEventListener("click", () => {
+
+        current = index;
+        updateCarousel();
+        restartAuto();
+
+    });
+
+});
+
+function startAuto(){
+
+    interval = setInterval(nextSlide, 5000);
+
+}
+
+function restartAuto(){
+
+    clearInterval(interval);
+    startAuto();
+
+}
+
+startAuto();
 
 /* ==========================================================
    INICIALIZACIÓN
