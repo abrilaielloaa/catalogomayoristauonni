@@ -110,7 +110,7 @@
             <div class="prod-controls">
               <button class="qty-btn" onclick="qch('p500x0',-1)">&#8722;</button>
               <input class="qty-inp" type="number" id="p500x0" value="0" min="0"
-                data-name="Lunchera porta snacks mediana" data-price="16000">
+                data-name="Lunchera porta snacks mediana" data-price="16155">
               <button class="qty-btn" onclick="qch('p500x0',1)">+</button>
               <button class="add-btn" id="btn_p500x0" onclick="addToCart('p500x0')">+ Agregar</button>
             </div>
@@ -125,14 +125,13 @@
             <div class="prod-controls">
               <button class="qty-btn" onclick="qch('p500x1',-1)">&#8722;</button>
               <input class="qty-inp" type="number" id="p500x1" value="0" min="0" data-name="Lunchera porta snacks chica"
-                data-price="13000">
+                data-price="13005">
               <button class="qty-btn" onclick="qch('p500x1',1)">+</button>
               <button class="add-btn" id="btn_p500x1" onclick="addToCart('p500x1')">+ Agregar</button>
             </div>
           </div>
         </div>
-        <div class="prod-card" id="card_p600x0" data-name="lunchera uonni" data-cat="Luncheras Uonni"
-          data-group="Originales de Uonni">
+        <div class="prod-card" id="card_p600x0" data-name="lunchera uonni" data-cat="Luncheras Uonni" data-group="Originales de Uonni">
           <img class="prod-img" src="https://acdn-us.mitiendanube.com/stores/007/065/447/products/whatsapp-image-2025-12-27-at-9-02-12-pm-40f235595cae6663ef17668814170148-1024-1024.webp" alt="Lunchera Uonni">
           <div class="prod-body">
             <div class="prod-name">Lunchera Uonni</div>
@@ -170,7 +169,7 @@
             <div class="prod-controls">
               <button class="qty-btn" onclick="qch('p700x0',-1)">&#8722;</button>
               <input class="qty-inp" type="number" id="p700x0" value="0" min="0"
-                data-name="Lunchera edicion limitada Argentina" data-price="13000">
+                data-name="Lunchera edicion limitada Argentina" data-price="20205">
               <button class="qty-btn" onclick="qch('p700x0',1)">+</button>
               <button class="add-btn" id="btn_p700x0" onclick="addToCart('p700x0')">+ Agregar</button>
             </div>
@@ -768,7 +767,7 @@
             <div class="prod-controls">
               <button class="qty-btn" onclick="qch('p4800x1',-1)">&#8722;</button>
               <input class="qty-inp" type="number" id="p4800x1" value="0" min="0"
-                data-name="Set magnetics - Do It Yourself" data-price="43500">
+                data-name="Set magnetics - Do It Yourself" data-price="21900">
               <button class="qty-btn" onclick="qch('p4800x1',1)">+</button>
               <button class="add-btn" id="btn_p4800x1" onclick="addToCart('p4800x1')">+ Agregar</button>
             </div>
@@ -783,7 +782,7 @@
             <div class="prod-controls">
               <button class="qty-btn" onclick="qch('p4800x2',-1)">&#8722;</button>
               <input class="qty-inp" type="number" id="p4800x2" value="0" min="0" data-name="Set magnetics - Colorful"
-                data-price="62000">
+                data-price="26400">
               <button class="qty-btn" onclick="qch('p4800x2',1)">+</button>
               <button class="add-btn" id="btn_p4800x2" onclick="addToCart('p4800x2')">+ Agregar</button>
             </div>
@@ -798,7 +797,7 @@
             <div class="prod-controls">
               <button class="qty-btn" onclick="qch('p4800x3',-1)">&#8722;</button>
               <input class="qty-inp" type="number" id="p4800x3" value="0" min="0" data-name="Set magnetics - Mini"
-                data-price="55400">
+                data-price="20000">
               <button class="qty-btn" onclick="qch('p4800x3',1)">+</button>
               <button class="add-btn" id="btn_p4800x3" onclick="addToCart('p4800x3')">+ Agregar</button>
             </div>
@@ -3188,9 +3187,19 @@
     <div class="cart-form">
       <div class="form-title">Tus datos</div>
       <div class="form-grid">
+           <div class="fg full">
+          <label>Código postal <span class="req">*</span></label>
+          <input type="text" id="f-cp" placeholder="Código postal" required>
+          <div class="error-msg">Campo requerido</div>
+        </div>
         <div class="fg full">
-          <label>Nombre completo <span class="req">*</span></label>
-          <input type="text" id="f-nombre"placeholder="Tu nombre" required>
+          <label>Localidad <span class="req">*</span></label>
+          <input type="text" id="f-localidad" placeholder="Ciudad, Provincia" required>
+          <div class="error-msg">Campo requerido</div>
+        </div>
+        <div class="fg full">
+          <label>Dirección<span class="req">*</span></label>
+          <input type="text" id="f-direccion" placeholder="Dirección" required>
           <div class="error-msg">Campo requerido</div>
         </div>
         <div class="fg full">

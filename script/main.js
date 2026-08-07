@@ -60,7 +60,9 @@ function saveClientData() {
     negocio: document.getElementById("f-negocio").value.trim(),
     wa: document.getElementById("f-wa").value.trim(),
     mail: document.getElementById("f-mail").value.trim(),
-    localidad: document.getElementById("f-localidad").value.trim()
+    cp: document.getElementById("f-cp").value.trim(),
+    localidad: document.getElementById("f-localidad").value.trim(),
+    direccion: document.getElementById("f-direccion").value.trim()
   };
   localStorage.setItem('uonni_client', JSON.stringify(data));
 }
@@ -78,7 +80,9 @@ function loadClientData() {
     if (d.negocio) document.getElementById("f-negocio").value = d.negocio;
     if (d.wa) document.getElementById("f-wa").value = d.wa;
     if (d.mail) document.getElementById("f-mail").value = d.mail;
+    if (d.cp) document.getElementById("f-cp").value = d.cp;
     if (d.localidad) document.getElementById("f-localidad").value = d.localidad;
+    if (d.direccion) document.getElementById("f-direccion").value = d.direccion;
   } catch (e) {
     // Manejo silencioso de errores de parseo/storage
   }
@@ -358,7 +362,7 @@ function applyFilters() {
  */
 function validateForm() {
   let valid = true;
-  const fields = ["f-nombre", "f-wa", "f-localidad"];
+  const fields = ["f-nombre", "f-wa", "f-cp", "f-localidad", "f-direccion"];
 
   fields.forEach((id) => {
     const inp = document.getElementById(id);
@@ -402,13 +406,17 @@ function confirmarPedido() {
   const wa = document.getElementById("f-wa").value.trim();
   const mail = document.getElementById("f-mail").value.trim();
   const localidad = document.getElementById("f-localidad").value.trim();
+  const cp = document.getElementById("f-cp").value.trim();
+  const direccion = document.getElementById("f-direccion").value.trim();
 
   let ch = "";
   if (nombre) ch += `<b>Nombre:</b> ${nombre}<br>`;
   if (negocio) ch += `<b>Negocio:</b> ${negocio}<br>`;
   if (wa) ch += `<b>WhatsApp:</b> ${wa}<br>`;
   if (mail) ch += `<b>Email:</b> ${mail}<br>`;
+  if (cp) ch += `<b>Código postal:</b> ${cp}<br>`;
   if (localidad) ch += `<b>Localidad:</b> ${localidad}<br>`;
+  if (direccion) ch += `<b>Dirección:</b> ${direccion}<br>`;
 
   document.getElementById("resumen-cliente").innerHTML = ch;
 
@@ -447,7 +455,9 @@ function buildTextResumen() {
   const negocio = document.getElementById("f-negocio").value.trim();
   const wa = document.getElementById("f-wa").value.trim();
   const mail = document.getElementById("f-mail").value.trim();
+  const cp = document.getElementById("f-cp").value.trim();
   const localidad = document.getElementById("f-localidad").value.trim();
+  const direccion = document.getElementById("f-direccion").value.trim();
 
   const total = Object.values(cart).reduce((s, i) => s + i.price * i.qty, 0);
   const fecha = new Date().toLocaleDateString("es-AR", { day: "2-digit", month: "2-digit", year: "numeric" });
@@ -463,7 +473,9 @@ function buildTextResumen() {
   if (negocio) lines.push(`Negocio: ${negocio}`);
   if (wa) lines.push(`WhatsApp: ${wa}`);
   if (mail) lines.push(`Email: ${mail}`);
+  if (cp) lines.push(`Código postal: ${cp}`);
   if (localidad) lines.push(`Localidad: ${localidad}`);
+  if (direccion) lines.push(`Dirección: ${direccion}`);
 
   lines.push(sep);
   lines.push("*PRODUCTOS*");
