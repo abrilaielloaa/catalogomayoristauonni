@@ -74,6 +74,17 @@
             <img src="./assets/banner/2.png" alt="Banner Luncheras porta snacks">
         </div>
 
+        <div class="slide active">
+          <a href="#card_p4800x4">
+            <img src="./assets/banner/atelier.png" alt="Atelier Mágico Uonni">
+          </a>
+        </div>
+        
+        <div class="slide active">
+            <img src="./assets/banner/4.png" alt="Mural Mágico Uonni">
+        </div>
+
+        
     </div>
 
     <button class="prev">&#10094;</button>
@@ -81,6 +92,7 @@
 
     <div class="dots">
         <span class="dot active"></span>
+        <span class="dot"></span>
         <span class="dot"></span>
         <span class="dot"></span>
     </div>
@@ -754,6 +766,22 @@
       </div>
       <div class="products-grid" id="grid_Juguetes_y_juegos">
 
+        <div class="prod-card" id="card_p4800x4" data-name="Atelier Mágico Uonni" data-cat="Juguetes y juegos"
+          data-group="Originales de Uonni">
+          <img class="prod-img" src="./assets/ateliermagicoo.png" alt="Atelier magico uonni">
+          <div class="prod-body">
+            <div class="prod-name">Atelier Mágico Uonni</div>
+            <div class="prod-price">$56.000</div>
+            <div class="prod-price">Llevando 10 unidades $54200</div>
+            <div class="prod-controls">
+              <button class="qty-btn" onclick="qch('p4800x4',-1)">&#8722;</button>
+              <input class="qty-inp" type="number" id="p4800x4" value="0" min="0"
+                data-name="Atelier Mágico Uonni" data-price="56000">
+              <button class="qty-btn" onclick="qch('p4800x4',1)">+</button>
+              <button class="add-btn" id="btn_p4800x4" onclick="addToCart('p4800x4')">+ Agregar</button>
+            </div>
+          </div>
+        </div>
         <div class="prod-card" id="card_p4800x1" data-name="set magnetics do it yourself" data-cat="Juguetes y juegos"
           data-group="Originales de Uonni">
           <img class="prod-img" src="https://acdn-us.mitiendanube.com/stores/007/065/447/products/whatsapp-image-2026-07-29-at-13-58-03-fc67b89071a3754b3017853444912958-1024-1024.webp" alt="Set magnetics - Do It Yourself">
