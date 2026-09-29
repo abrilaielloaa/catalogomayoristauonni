@@ -55,16 +55,20 @@ function loadCart() {
  * Guarda los datos del cliente ingresados en el formulario en LocalStorage.
  */
 function saveClientData() {
-  const data = {
-    nombre: document.getElementById("f-nombre").value.trim(),
-    negocio: document.getElementById("f-negocio").value.trim(),
-    wa: document.getElementById("f-wa").value.trim(),
-    mail: document.getElementById("f-mail").value.trim(),
-    cp: document.getElementById("f-cp").value.trim(),
-    localidad: document.getElementById("f-localidad").value.trim(),
-    direccion: document.getElementById("f-direccion").value.trim()
-  };
-  localStorage.setItem('uonni_client', JSON.stringify(data));
+  try {
+    const data = {
+      nombre: document.getElementById("f-nombre").value.trim(),
+      negocio: document.getElementById("f-negocio").value.trim(),
+      wa: document.getElementById("f-wa").value.trim(),
+      mail: document.getElementById("f-mail").value.trim(),
+      cp: document.getElementById("f-cp").value.trim(),
+      localidad: document.getElementById("f-localidad").value.trim(),
+      direccion: document.getElementById("f-direccion").value.trim()
+    };
+    localStorage.setItem('uonni_client', JSON.stringify(data));
+  } catch (e) {
+    // Manejo silencioso de errores de storage
+  }
 }
 
 /**
@@ -362,17 +366,31 @@ function applyFilters() {
  */
 function validateForm() {
   let valid = true;
+  let firstError = null;
   const fields = ["f-nombre", "f-wa", "f-cp", "f-localidad", "f-direccion"];
 
   fields.forEach((id) => {
     const inp = document.getElementById(id);
-    if (!inp.value.trim()) {
+    let ok = inp.value.trim() !== "";
+
+    // Nombre y apellido: mínimo dos palabras
+    if (id === "f-nombre" && ok) {
+      ok = inp.value.trim().split(/\s+/).length >= 2;
+    }
+
+    if (!ok) {
       inp.classList.add("error");
       valid = false;
+      if (!firstError) firstError = inp;
     } else {
       inp.classList.remove("error");
     }
   });
+
+  if (firstError) {
+    firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+    firstError.focus();
+  }
 
   return valid;
 }
@@ -386,11 +404,7 @@ function validateForm() {
  * Valida el formulario del comprador, guarda sus datos, arma el desglose del pedido y despliega el modal de confirmación.
  */
 function confirmarPedido() {
-  if (!validateForm()) {
-    document.getElementById("f-nombre").scrollIntoView({ behavior: "smooth", block: "center" });
-    return;
-  }
-
+  if (!validateForm()) return;
   saveClientData();
 
   const keys = Object.keys(cart);
@@ -643,6 +657,11 @@ function restartAuto(){
 }
 
 startAuto();
+
+["f-nombre", "f-wa", "f-cp", "f-localidad", "f-direccion"].forEach((id) => {
+  const inp = document.getElementById(id);
+  if (inp) inp.addEventListener("input", () => inp.classList.remove("error"));
+});
 
 /* ==========================================================
    INICIALIZACIÓN
