@@ -20,6 +20,12 @@ var currentCat = 'all';
  */
 var currentSearch = '';
 
+/**
+ * Clave de LocalStorage para el carrito.
+ * Cambiarla vacía los carritos guardados de visitas anteriores.
+ */
+var CART_KEY = 'uonni_cart_v2';
+
 
 /* ==========================================================
    LOCAL STORAGE
@@ -30,7 +36,7 @@ var currentSearch = '';
  */
 function saveCart() {
   try {
-    localStorage.setItem('uonni_cart', JSON.stringify(cart));
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
   } catch (e) {
     // Manejo silencioso de errores de storage
   }
@@ -41,7 +47,7 @@ function saveCart() {
  */
 function loadCart() {
   try {
-    const s = localStorage.getItem('uonni_cart');
+    const s = localStorage.getItem(CART_KEY);
     if (s) {
       cart = JSON.parse(s);
       renderCart();
@@ -577,7 +583,7 @@ if (slider) {
   });
 }
 
-// Carrusel
+// Carrusel (solo se activa si existe en el HTML; hoy está comentado)
 const slides = document.querySelector(".slides");
 const slide = document.querySelectorAll(".slide");
 const dots = document.querySelectorAll(".dot");
@@ -585,78 +591,62 @@ const dots = document.querySelectorAll(".dot");
 const prev = document.querySelector(".prev");
 const next = document.querySelector(".next");
 
-let current = 0;
-let interval;
+if (slides && prev && next && slide.length > 0) {
+  let current = 0;
+  let interval;
 
-function updateCarousel() {
-
+  function updateCarousel() {
     slides.style.transform = `translateX(-${current * 100}%)`;
 
     dots.forEach(dot => dot.classList.remove("active"));
-    dots[current].classList.add("active");
+    if (dots[current]) dots[current].classList.add("active");
+  }
 
-}
-
-function nextSlide() {
-
+  function nextSlide() {
     current++;
-
-    if(current >= slide.length){
-        current = 0;
+    if (current >= slide.length) {
+      current = 0;
     }
-
     updateCarousel();
+  }
 
-}
-
-function prevSlide() {
-
+  function prevSlide() {
     current--;
-
-    if(current < 0){
-        current = slide.length - 1;
+    if (current < 0) {
+      current = slide.length - 1;
     }
-
     updateCarousel();
+  }
 
-}
-
-next.addEventListener("click", () => {
-    nextSlide();
-    restartAuto();
-});
-
-prev.addEventListener("click", () => {
-    prevSlide();
-    restartAuto();
-});
-
-dots.forEach((dot, index) => {
-
-    dot.addEventListener("click", () => {
-
-        current = index;
-        updateCarousel();
-        restartAuto();
-
-    });
-
-});
-
-function startAuto(){
-
+  function startAuto() {
     interval = setInterval(nextSlide, 5000);
+  }
 
-}
-
-function restartAuto(){
-
+  function restartAuto() {
     clearInterval(interval);
     startAuto();
+  }
 
+  next.addEventListener("click", () => {
+    nextSlide();
+    restartAuto();
+  });
+
+  prev.addEventListener("click", () => {
+    prevSlide();
+    restartAuto();
+  });
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      current = index;
+      updateCarousel();
+      restartAuto();
+    });
+  });
+
+  startAuto();
 }
-
-startAuto();
 
 ["f-nombre", "f-wa", "f-cp", "f-localidad", "f-direccion"].forEach((id) => {
   const inp = document.getElementById(id);

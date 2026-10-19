@@ -100,35 +100,54 @@
     <section class="cat-section" id="sec_Luncheras_Uonni" data-cat="Luncheras Uonni" data-group="Originales de Uonni">
       <div class="cat-header">
         <div class="cat-name">Luncheras Uonni</div>
-        <div class="cat-count">5 productos</div>
+        <div class="cat-count">6 productos</div>
       </div>
       <div class="products-grid" id="grid_Luncheras_Uonni">
 
-        <div class="prod-card" id="card_p500x0" data-name="lunchera porta snacks mediana" data-cat="Luncheras Uonni"
+        <div class="prod-card" id="card_p500x2" data-name="lunchera porta snacks l" data-cat="Luncheras Uonni"
           data-group="Originales de Uonni">
-          <img class="prod-img" src="https://acdn-us.mitiendanube.com/stores/007/065/447/products/img_3375-f1f25173da0deb7f7d17723870346766-1024-1024.webp" alt="Lunchera porta snacks mediana">
+          <!-- TODO: reemplazar por la imagen de la versión L -->
+          <img class="prod-img" src="./assets/luncherasnacksm.jpeg" alt="Lunchera porta snacks L">
           <div class="prod-body">
-            <div class="prod-name">Lunchera porta snacks mediana</div>
-            <div class="prod-price">$16.155</div>
+            <div class="prod-name">Lunchera porta snacks L</div>
+            <div class="prod-price" style="text-decoration:line-through;opacity:.6">$18.855</div>
+            <div class="prod-price">Solo por preventa $16.480</div>
+            <div class="prod-controls">
+              <button class="qty-btn" onclick="qch('p500x2',-1)">&#8722;</button>
+              <input class="qty-inp" type="number" id="p500x2" value="0" min="0"
+                data-name="Lunchera porta snacks L" data-price="16480">
+              <button class="qty-btn" onclick="qch('p500x2',1)">+</button>
+              <button class="add-btn" id="btn_p500x2" onclick="addToCart('p500x2')">+ Agregar</button>
+            </div>
+          </div>
+        </div>
+        <div class="prod-card" id="card_p500x0" data-name="lunchera porta snacks m" data-cat="Luncheras Uonni"
+          data-group="Originales de Uonni">
+          <img class="prod-img" src="./assets/luncherasnacksm.jpeg" alt="Lunchera porta snacks M">
+          <div class="prod-body">
+            <div class="prod-name">Lunchera porta snacks M</div>
+            <div class="prod-price" style="text-decoration:line-through;opacity:.6">$17.055</div>
+            <div class="prod-price">Solo por preventa $14.905</div>
             <div class="prod-controls">
               <button class="qty-btn" onclick="qch('p500x0',-1)">&#8722;</button>
               <input class="qty-inp" type="number" id="p500x0" value="0" min="0"
-                data-name="Lunchera porta snacks mediana" data-price="16155">
+                data-name="Lunchera porta snacks M" data-price="14905">
               <button class="qty-btn" onclick="qch('p500x0',1)">+</button>
               <button class="add-btn" id="btn_p500x0" onclick="addToCart('p500x0')">+ Agregar</button>
             </div>
           </div>
         </div>
-        <div class="prod-card" id="card_p500x1" data-name="lunchera porta snacks chica" data-cat="Luncheras Uonni"
+        <div class="prod-card" id="card_p500x1" data-name="lunchera porta snacks s" data-cat="Luncheras Uonni"
           data-group="Originales de Uonni">
-          <img class="prod-img" src="https://acdn-us.mitiendanube.com/stores/007/065/447/products/whatsapp-image-2025-08-19-at-17-51-01-d8935aa0df255ba3d017665202330095-1024-1024.webp" alt="Lunchera porta snacks chica">
+          <img class="prod-img" src="./assets/luncherasnacks.jpg" alt="Lunchera porta snacks S">
           <div class="prod-body">
-            <div class="prod-name">Lunchera porta snacks chica</div>
-            <div class="prod-price">$13.005</div>
+            <div class="prod-name">Lunchera porta snacks S</div>
+            <div class="prod-price" style="text-decoration:line-through;opacity:.6">$13.000</div>
+            <div class="prod-price">Solo por preventa $11.365</div>
             <div class="prod-controls">
               <button class="qty-btn" onclick="qch('p500x1',-1)">&#8722;</button>
-              <input class="qty-inp" type="number" id="p500x1" value="0" min="0" data-name="Lunchera porta snacks chica"
-                data-price="13005">
+              <input class="qty-inp" type="number" id="p500x1" value="0" min="0" data-name="Lunchera porta snacks S"
+                data-price="11365">
               <button class="qty-btn" onclick="qch('p500x1',1)">+</button>
               <button class="add-btn" id="btn_p500x1" onclick="addToCart('p500x1')">+ Agregar</button>
             </div>
@@ -153,11 +172,12 @@
           <img class="prod-img" src="https://acdn-us.mitiendanube.com/stores/007/065/447/products/d4cfc281-c543-45e1-b116-a0364fe5089b-84ece5f46f77f4e12617720624829100-1024-1024.webp" alt="Lunchera Clasica">
           <div class="prod-body">
             <div class="prod-name">Lunchera Clasica</div>
-            <div class="prod-price">$13.900</div>
+            <div class="prod-price" style="text-decoration:line-through;opacity:.6">$13.905</div>
+            <div class="prod-price">Solo por preventa $12.150</div>
             <div class="prod-controls">
               <button class="qty-btn" onclick="qch('p600x1',-1)">&#8722;</button>
               <input class="qty-inp" type="number" id="p600x1" value="0" min="0" data-name="Lunchera Clasica"
-                data-price="13900">
+                data-price="12150">
               <button class="qty-btn" onclick="qch('p600x1',1)">+</button>
               <button class="add-btn" id="btn_p600x1" onclick="addToCart('p600x1')">+ Agregar</button>
             </div>
